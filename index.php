@@ -6,6 +6,16 @@
     <title>Document</title>
 </head>
 <body>
-<h1>herro</h1>
+    <form>
+        <input type="text" name="person">
+        <button>NAME</button>
+    </form>
+    <?php
+$name = $_GET['person'];
+echo $name. " doesnt like physics"
+
+
+
+?>
 </body>
 </html>
