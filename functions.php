@@ -8,11 +8,22 @@
 </head>
 <body>
     <?php
-    echo str_replace("bob","roy","hi bob");
+    echo str_replace("bob","roy","hi bob<br>");
 
-    
-    
-    
+
+
+function newCalc($x){
+$newnr = $x * 0.75;
+echo "here is 75 %: ".$newnr;
+    }
+
+
+$x = 100;
+newcalc($x);
+echo "<br>";
+$a = 10;
+newcalc($a);
+
     
     ?>
 </body>
