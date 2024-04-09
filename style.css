@@ -1,9 +1,4 @@
-p{
-    text-align: center;
-    font-size: 120px;
-    font-family: Arial;
-    margin-top: 38vh;
-}
-.nav-item{
+
+nav{
     background-color:aqua;
 }
