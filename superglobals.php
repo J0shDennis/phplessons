@@ -18,11 +18,11 @@
 $golbals
 $_post
 $_get
+
+
 $_cookie
 $_session
-*/
 
-/*
 
 $x = 5;
 
@@ -33,13 +33,22 @@ function something (){
 
 something();
 
-*/
-echo $_GET['name'];
-?>
 
+echo $_GET['name'];
+
+/*
 <form method="GET">
     <input type="hidden" name="name" value="jo">
     <button type="submit">PRESS ME!</button>
 </form>
+
+*/
+
+setcookie("name","joe", time() + 172800);
+
+$_SESSION['login'] = "joe";
+?>
+
+
 </body>
 </html>
