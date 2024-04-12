@@ -15,6 +15,25 @@
 
 <?php
 /*
+
+
+
+
+
+
+create table posts (
+	id int(3) not null PRIMARY KEY AUTO_INCREMENT,
+    subject varchar(128) not null,
+    content varchar(1000) not null,
+    date datetime not null
+);
+
+
+insert into posts (username, password, date) VALUES ('bil','1234','2024-11-14 16:38:01');
+
+
+
+
 $golbals
 $_post
 $_get
