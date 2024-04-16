@@ -1,4 +1,5 @@
 <?php
+include_once'includes/connection.php';
 include 'includes/header.php';
 ?>
 <!doctype html>
