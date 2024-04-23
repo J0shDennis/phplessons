@@ -1,5 +1,5 @@
 <?php
-require "signup/includes2/header.php";
+require "header.php";
 ?>
 
 <main>
@@ -7,11 +7,11 @@ require "signup/includes2/header.php";
 <form action="signup/signup.php" method="post">
     <input type="text" name="uid" plactholder="username" >
     <input type="text" name="mail" plactholder="E-mail">
-    <input type="text" name="pwd" plactholder="password">
-    <input type="text" name="pwd-repeat" plactholder="repeat password">
+    <input type="password" name="pwd" plactholder="password">
+    <input type="password" name="pwd-repeat" plactholder="repeat password">
 <button type="submit" name="signup-submit">signup</button>
 </main>
 
 <?php 
-require "signup/includes2/footer.php";
+require "footer.php";
 ?>

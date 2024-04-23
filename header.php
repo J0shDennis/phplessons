@@ -20,7 +20,7 @@
     <li><a href="#">Home</a></li>
 </ul>
 <div>
-    <form action="signup/login.inc.php" method="post">
+    <form action="login.inc.php" method="post">
         <input type="text" name="mailude" placeholder="Username/E-mail...">
         <input type="pasword" name="pwd" placeholder="Password...">
         <button type="submit" name="login-submit">Login</button>
