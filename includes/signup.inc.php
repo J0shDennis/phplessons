@@ -5,9 +5,9 @@ if (isset($_POST['signup-submit'])){
 
     $username = $_POST['uid'];
     $email = $_POST['mail'];
-    $Password = $_POST['pwd'];
-    $passwordRepeat = $_POST['pwd-repeat'];
- if(empty($username) || empty($email) || empty($Password) || empty($PasswordRepeat)){
+    $password = $_POST['pwd'];
+    $passwordrepeat = $_POST['pwd-repeat'];
+ if(empty($username) || empty($email) || empty($password) || empty($passwordrepeat)){
  header("location: ../signup.php?error=emptyfields&uid=".$username."&mail=".$email);
 exit();
  }
@@ -23,8 +23,8 @@ else if (!preg_match("/^[a-zA-Z0-9]*$/", $username)){
     header("location: ../signup.php?error=invaliduid&mail=".$email);
     exit();
     }
-    else if ($Password !== $passwordRepeat){
-        header("location: ../signup.php?error=passwordcheckuid=".$username."&mail=".$email);
+    else if ($password !== $passwordrepeat){
+        header("location: ../signup.php?error=passwordcheck&uid=".$username."&mail=".$email);
         exit();
     }
     else {
@@ -35,6 +35,41 @@ if (!mysqli_stmt_prepare($stmt, $sql)){
     header("location: ../signup.php?error=sqlerror");
     exit();
 }
-mysqli_stmt_bind_param();
-    }
+else {
+mysqli_stmt_bind_param($stmt, "s", $username);
+mysqli_stmt_execute($stmt); 
+mysqli_stmt_store_result($stmt);
+$resultCheck = mysqli_stmt_num_rows($stmt);
+
+if ($resultcheck > 0) {
+    header("location: ../signup.php?error=usertaken&mail=.$email");
+    exit();
+}
+else {
+
+    $sql = "INSERT INTO users (uidusers, emailusers, pwdusers) VALUES (?, ?, ?)";
+    $stmt = mysqlli_stmt_init($conn);
+if (!mysqli_stmt_prepare($stmt, $sql)){
+    header("location: ../signup.php?error=sqlerror");
+    exit();
+}
+else {
+$hashedPwd = password_hash($password, Password_default);
+
+    mysqli_stmt_bind_param($stmt, "sss", $username, $email, $hashedPwd);
+mysqli_stmt_execute($stmt); 
+header("location: ../signup.php?signup=sucess");
+exit();
+
+}
+
+}
+}
+}
+mysqli_stmt_close($stmt);
+mysqli_close($conn);
+}
+else {
+    header("location: ../signup.php");
+exit();
 }
