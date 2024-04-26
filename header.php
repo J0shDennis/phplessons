@@ -24,6 +24,9 @@ session_start
     <li><a href="#">Home</a></li>
 </ul>
 <div>
+
+
+
 <?php
     if(isset($session['userid'])){
     echo "<form action="includes/logout.inc.php" method="post">
@@ -31,7 +34,7 @@ session_start
 </form>";
 }
 else {
-echo '    <form action="includes/login.inc.php" method="post">
+echo '<form action="includes/login.inc.php" method="post">
 <input type="text" name="mailuid" placeholder="Username/E-mail...">
 <input type="pasword" name="pwd" placeholder="Password...">
 <button type="submit" name="login-submit">Login</button>
