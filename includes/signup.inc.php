@@ -7,20 +7,21 @@ if (isset($_POST['signup-submit'])){
     $email = $_POST['mail'];
     $password = $_POST['pwd'];
     $passwordrepeat = $_POST['pwd-repeat'];
+
  if(empty($username) || empty($email) || empty($password) || empty($passwordrepeat)){
  header("location: ../signup.php?error=emptyfields&uid=".$username."&mail=".$email);
 exit();
  }
  else if (!filter_var($email, FILTER_VALIDATE_EMAIL) && !preg_match("/^[a-zA-Z0-9]*$/", $username)){
-    header("location: ../signup.php?error=emptymailuid");
+    header("location: ../signup.php?error=emptymail&uid");
     exit();
  }
 else if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
-header("location: ../signup.php?error=emptymail&uid=".$username);
+header("location: ../signup.php?error=invalidmail&uid=".$username);
 exit();
 }
 else if (!preg_match("/^[a-zA-Z0-9]*$/", $username)){
-    header("location: ../signup.php?error=invaliduid&mail=".$email);
+    header("location: ../signup.php?error=invalid&mail=".$email);
     exit();
     }
     else if ($password !== $passwordrepeat){
@@ -30,7 +31,7 @@ else if (!preg_match("/^[a-zA-Z0-9]*$/", $username)){
     else {
 
 $sql = "SELECT uidusers FROM users WHERE uidusers=?";
-$stmt = mysqlli_stmt_init($conn);
+$stmt = mysqli_stmt_init($conn);
 if (!mysqli_stmt_prepare($stmt, $sql)){
     header("location: ../signup.php?error=sqlerror");
     exit();
@@ -47,18 +48,18 @@ if ($resultcheck > 0) {
 }
 else {
 
-    $sql = "INSERT INTO users (uidusers, emailusers, pwdusers) VALUES (?, ?, ?)";
-    $stmt = mysqlli_stmt_init($conn);
+    $sql = "INSERT INTO users (uidusers	, emailusers, pwdusers) VALUES (?, ?, ?)";
+    $stmt = mysqli_stmt_init($conn);
 if (!mysqli_stmt_prepare($stmt, $sql)){
     header("location: ../signup.php?error=sqlerror");
     exit();
 }
 else {
-$hashedPwd = password_hash($password, Password_default);
+$hashedPwd = password_hash($password, PASSWORD_DEFAULT);
 
     mysqli_stmt_bind_param($stmt, "sss", $username, $email, $hashedPwd);
 mysqli_stmt_execute($stmt); 
-header("location: ../signup.php?signup=sucess");
+header("location: ../signup.php?signup=success");
 exit();
 
 }

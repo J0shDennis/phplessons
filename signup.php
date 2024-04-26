@@ -25,8 +25,8 @@ if (isset($_GET['error'])){
         echo '<p class="signuperror"> username is already taken!</p>';
     }
 }
-else if ($_GET["signup"] == "sucess"){
-    echo '<p class="signupsucess"> Signup Sucessfull!</p>';
+if (isset($_GET["signup"])){
+    echo '<p class="signupsuccess"> Signup Successfull!</p>';
 }
 ?>
 <form action="includes/signup.inc.php" method="post">

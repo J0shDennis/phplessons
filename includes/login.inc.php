@@ -24,7 +24,7 @@ else {
         $result = mysqli_stmt_get_reslut($stmt);
         if ($row = mysqli_fetch_assoc($result)){ 
 $pwdcheck = password_verify($password, $row, ['pwdusers']);
-if(pwdcheck == false){
+if($pwdcheck == false){
     header("location: ../index.php?error=wrongpwd");
     exit();  
 }

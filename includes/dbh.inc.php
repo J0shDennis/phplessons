@@ -1,12 +1,12 @@
 <?php
 
 $servername = "localhost";
-$dbusername = "root";
-$dbpassword = "";
-$dbname = "loginsystem";
+$dbUsername = "root";
+$dbPassword = "";
+$dbName = "loginsystem";
 
-$conn = mysqli_connect($servername, $dbusername, $dbpassword, $dbname);
+$conn = mysqli_connect($servername, $dbUsername, $dbPassword, $dbName);
 
 if (!$conn){
-    die("connection failled: ".mysqli_connect_error());
+    die("connection failed: ".mysqli_connect_error());
 }
